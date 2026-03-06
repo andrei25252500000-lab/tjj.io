@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>З 8 Березня, Алло!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fff5f8 0%, #ffe4e1 100%);
+            font-family: 'Georgia', serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(219, 112, 147, 0.2);
+            border: 3px solid #f8bbd0;
+            max-width: 600px;
+            position: relative;
+            animation: fadeIn 2s ease-in;
+        }
+
+        h1 {
+            color: #c2185b;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .message {
+            font-size: 1.4rem;
+            color: #4a4a4a;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .name {
+            font-weight: bold;
+            color: #d81b60;
+            font-style: italic;
+        }
+
+        .flower-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: sway 3s ease-in-out infinite;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(-10deg); }
+            50% { transform: rotate(10deg); }
+        }
+
+        /* Ефект літаючих квітів */
+        .floating-flower {
+            position: absolute;
+            font-size: 24px;
+            pointer-events: none;
+            z-index: 1;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="flower-icon">🌸</div>
+        <h1>З 8 Березня, <br><span class="name">Алло</span></h1>
+        <div class="message">
+            Дорога наша, нехай ця весна принесе Тобі стільки ж тепла, 
+            скільки Ти даруєш нам кожного дня. <br><br>
+            Бажаю міцного здоров'я, спокою в душі!
+        </div>
+        <p style="color: #ad1457; font-weight: bold;">З великою любов'ю, Твій внук ❤️</p>
+    </div>
+
+    <script>
+        const flowers = ['🌸', '🌷', '🌺', '✨', '🌼'];
+        
+        function createFlower() {
+            const flower = document.createElement('div');
+            flower.classList.add('floating-flower');
+            flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+            flower.style.left = Math.random() * 100 + 'vw';
+            flower.style.top = '-50px';
+            flower.style.fontSize = Math.random() * 20 + 20 + 'px';
+            flower.style.animationDuration = Math.random() * 4 + 3 + 's';
+            flower.style.opacity = Math.random();
+            
+            document.body.appendChild(flower);
+
+            setTimeout(() => {
+                flower.remove();
+            }, 7000);
+        }
+
+        setInterval(createFlower, 400);
+    </script>
+</body>
+</html>
